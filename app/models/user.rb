@@ -7,21 +7,13 @@ class User < ActiveRecord::Base
 
   has_many :goals, dependent: :destroy
 
-  has_many :goal_comments,
-    class_name: 'GoalComment',
+  has_many :comments,
+    as: :commentable
+
+  has_many :authored_comments,
+    class_name: 'Comment',
     foreign_key: :author_id,
     inverse_of: :author
-
-  has_many :authored_user_comments,
-    class_name: 'UserComment',
-    foreign_key: :author_id,
-    inverse_of: :author
-
-  has_many :recieved_user_comments,
-    class_name: 'UserComment',
-    foreign_key: :user_id,
-    inverse_of: :user
-
 
   attr_reader :password
 
