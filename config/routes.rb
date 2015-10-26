@@ -4,5 +4,8 @@ Rails.application.routes.draw do
     resources :goals, only: :new
   end
   resource :session, only: [:new, :create, :destroy]
-  resources :goals, except: [:new, :index]
+  resources :goals, except: [:new, :index] do
+    resources :goal_comments, only: :new
+  end
+  resources :goal_comments, except: :new
 end

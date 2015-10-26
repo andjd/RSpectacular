@@ -1,0 +1,2 @@
+class UserCommentController < ApplicationController
+end

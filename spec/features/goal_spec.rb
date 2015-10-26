@@ -56,36 +56,6 @@ feature "it lets you edit goals" do
     logout
     signup("dan")
     visit user_url(User.first)
-    expect(page).to have_button("Edit Goal")
+    expect(page).to_not have_button("Edit Goal")
   end
-end
-
-
-def signup(user)
-  visit "/users/new"
-  fill_in("Username", with: user)
-  fill_in("Password", with: "password")
-  click_on("Create User")
-end
-
-def create_private_goal
-  signup("Andrew")
-  visit new_user_goal_url(User.first)
-  fill_in("Target:", with: "Lose 10 lbs")
-  check("Private:")
-  click_on("Create Goal")
-end
-
-def create_public_goal
-  visit new_user_goal_url(User.first)
-  fill_in("Target:", with: "CRUSH IT")
-  uncheck("Private:")
-  click_on("Create Goal")
-end
-
-def mark_goal_as_checked
-  create_private_goal
-  click_on("Edit Goal")
-  check("Completed")
-  click_on("Edit Goal")
 end

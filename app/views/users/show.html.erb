@@ -5,6 +5,13 @@
 <% if !goal.is_completed && (goal.is_public || current_user == goal.user) %>
   <%= ("<li>" + h(goal.target) + "</li>").html_safe %>
   <%= button_to "Edit Goal", edit_goal_url(goal), method: :get if current_user == goal.user -%>
+  Comments:<br>
+  <ul>
+  <% goal.comments.each do |comment| %>
+    <li><%= comment.comment %></li>
+  <% end %>
+  </ul>
+  <%= button_to "Add Comment", new_goal_goal_comment_url(goal), method: :get %>
   <% end %>
 <% end %>
 

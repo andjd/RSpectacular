@@ -1,0 +1,9 @@
+<h1>Add Comment</h1>
+<form action=" <%= goal_comments_url %>" method="POST">
+  <%= auth_token %>
+  <label for="commnet"> Your comment: </label>
+  <textarea id="comment" name="goal_comment[comment]"> <%= @comment.comment %></textarea>
+  <input type="hidden" name="goal_comment[goal_id]" value="<%=  @goal.id %>">
+  <button>New Comment</button>
+
+</form>
