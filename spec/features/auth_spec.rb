@@ -10,7 +10,7 @@ feature "the signup process" do
 
     it "shows username on the homepage after signup" do
 
-      signup
+      signup("Andrew")
 
       expect(page).to have_content("Andrew")
     end
@@ -20,7 +20,7 @@ end
 
 feature "logging in" do
    it "shows username on the homepage after login" do
-     signup
+     signup("Andrew")
      logout
      visit "/session/new"
      fill_in("Username", with: "Andrew")
@@ -38,15 +38,15 @@ feature "logging out" do
     expect(page).to have_link("Login")
   end
   it "doesn't show username on the homepage after logout" do
-    signup
+    signup("Andrew")
     logout
     expect(page).not_to have_content("Andrew")
   end
 end
 
-def signup
-  visit "/users/new"
-  fill_in("Username", with: "Andrew")
-  fill_in("Password", with: "password")
-  click_on("Create User")
-end
+# def signup
+#   visit "/users/new"
+#   fill_in("Username", with: "Andrew")
+#   fill_in("Password", with: "password")
+#   click_on("Create User")
+# end

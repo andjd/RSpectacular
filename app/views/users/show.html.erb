@@ -18,3 +18,10 @@
 <% comp_count = @goals.to_a.count {|goal| goal.is_completed} %>
 <%= comp_count.to_s + " " + "Goal".pluralize(comp_count) + " Completed" %>
 </ul>
+<ul>
+  <% @user.recieved_user_comments.each do |comment| %>
+  <li> <%= comment.comment  %> </li>
+  <% end %>
+</ul>
+
+  <%= button_to "Add User Comment", new_user_user_comment_url(@user), method: :get %>
