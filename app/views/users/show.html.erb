@@ -1,0 +1,13 @@
+<h1><%= @user.username %></h1>
+
+<ul>
+<% @goals.each do |goal| %>
+<% if !goal.is_completed && (goal.is_public || current_user == goal.user) %>
+  <%= ("<li>" + h(goal.target) + "</li>").html_safe %>
+  <%= button_to "Edit Goal", edit_goal_url(goal), method: :get if current_user == goal.user -%>
+  <% end %>
+<% end %>
+
+<% comp_count = @goals.to_a.count {|goal| goal.is_completed} %>
+<%= comp_count.to_s + " " + "Goal".pluralize(comp_count) + " Completed" %>
+</ul>

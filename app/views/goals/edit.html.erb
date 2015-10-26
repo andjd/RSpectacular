@@ -1,0 +1,19 @@
+<h1> Create Goal </h1>
+<form action="<%= goal_url(@goal)  %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <%= auth_token %>
+  <label>Target:
+    <input type="text" name="goal[target]" value="<%= @goal.target %>">
+  </label>
+  <input type="hidden" name="goal[is_public]" value="true">
+  <label> Private:
+    <input type= "checkbox" name="goal[is_public]" value="false"
+    <%= 'checked' if !@goal.is_public %>
+  </label> <br>
+  <input type="hidden" name="goal[is_completed]" value="false">
+  <label> Completed:
+    <input id="Completed" type= "checkbox" name="goal[is_completed]" value="true"
+    <%= 'checked' if @goal.is_completed %>
+  </label>
+  <button>Edit Goal</button>
+</form>

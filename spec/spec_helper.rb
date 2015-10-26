@@ -90,3 +90,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def logout
+  click_on("Log Out")
+end
